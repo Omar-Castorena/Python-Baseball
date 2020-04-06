@@ -11,7 +11,8 @@ game_frames = []
 identifiers = pd.DataFrame()
 
 for game_file in game_files:
-    game_frame = pd.read_csv(game_file, names = ['type', 'multi2', 'multi3', 'multi4', 'multi5', 'multi6', 'event'])
+    game_frame = pd.read_csv(game_file, names=[
+                             'type', 'multi2', 'multi3', 'multi4', 'multi5', 'multi6', 'event'])
     game_frames.append(game_frame)
 
 games = pd.concat(game_frames)
@@ -28,6 +29,6 @@ games = pd.concat([games, identifiers], axis=1, sort=False)
 
 games = games.fillna(' ')
 
-games.loc[:, 'type']=pd.Categorical(games.loc[:, 'type'])
+games.loc[:, 'type'] = pd.Categorical(games.loc[:, 'type'])
 
 print(games.head(5))
