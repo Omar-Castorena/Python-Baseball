@@ -25,7 +25,7 @@ hits = hits.assign(hit_type=hit_type)
 hits = hits.groupby(['inning', 'hit_type']).size().reset_index(name='count')
 
 # convert hit type to categorical
-hits['hit_type'] = pd.Categorical(['single', 'double', 'triple', 'hr'])
+pd.Categorical(hits.loc[:, 'hit_type'], ['single', 'double', 'triple', 'hr'])
 
 # sort values
 hits = hits.sort_values(by=['inning', 'hit_type'])
